@@ -1,14 +1,16 @@
 'use strict';
-const makeTransaction = function (quantity, pricePerDroid, customerCredits) {
-  const summ = quantity * pricePerDroid;
-  const result =
-    customerCredits >= summ
-      ? `You ordered ${quantity} droids worth ${summ} credits!`
-      : 'Insufficient funds!';
-  return result;
+const slugify = function (text = 'string') {
+  if (typeof text === 'string') {
+    const lower = text.toLowerCase();
+    const arr = lower.split(' ');
+    const slug = arr.join('-');
+    return slug;
+  } else {
+    console.log('Wrong type of argument');
+    return;
+  }
 };
-console.log(makeTransaction(5, 3000, 23000)); // "You ordered 5 droids worth 15000 credits!"
-console.log(makeTransaction(3, 1000, 15000)); // "You ordered 3 droids worth 3000 credits!"
-console.log(makeTransaction(10, 5000, 8000)); // "Insufficient funds!"
-console.log(makeTransaction(8, 2000, 10000)); // "Insufficient funds!"
-console.log(makeTransaction(10, 500, 5000)); // "You ordered 10 droids worth 5000 credits!"
+console.log(slugify('Arrays for begginers')); // "arrays-for-begginers"
+console.log(slugify('English for developer')); // "english-for-developer"
+console.log(slugify('Ten secrets of JavaScript')); // "ten-secrets-of-javascript"
+console.log(slugify('How to become a JUNIOR developer in TWO WEEKS')); // "how-to-become-a-junior-developer-in-two-weeks"
