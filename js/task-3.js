@@ -2,26 +2,86 @@
 taskNum++;
 console.log(`%c Task ${taskNum} `, style);
 
-const profile = {
-  username: 'Jacob',
-  playTime: 300,
-  getInfo() {
-    return `${this.username} has ${this.playTime} active hours!`;
-  },
-  changeUsername(name) {
-    if (typeof name !== 'string')
-      throw new Error(`Provide valid name! Not ${typeof name}`);
-    this.username = name;
-  },
-  updatePlayTime(minutes) {
-    if (typeof minutes !== 'number')
-      throw new Error(`Provide valid time in minutes! Not ${typeof minutes}`);
-    this.playTime += minutes;
-  },
+const sortByDescendingFriendCount = users => {
+  const sortedFriends = users
+    .map(users => users)
+    .toSorted((a, b) => b.friends.length - a.friends.length);
+  return sortedFriends;
 };
 
-console.log(profile.getInfo()); // "Jacob has 300 active hours!"
-profile.changeUsername('Marco');
-console.log(profile.getInfo()); // "Marco has 300 active hours!"
-profile.updatePlayTime(20);
-console.log(profile.getInfo()); // "Marco has 320 active hours!"
+console.log(
+  sortByDescendingFriendCount([
+    {
+      name: 'Moore Hensley',
+      friends: ['Sharron Pace'],
+      gender: 'male',
+    },
+    {
+      name: 'Sharlene Bush',
+      friends: ['Briana Decker', 'Sharron Pace'],
+      gender: 'female',
+    },
+    {
+      name: 'Ross Vazquez',
+      friends: ['Marilyn Mcintosh', 'Padilla Garrison', 'Naomi Buckner'],
+      gender: 'male',
+    },
+    {
+      name: 'Elma Head',
+      friends: ['Goldie Gentry', 'Aisha Tran'],
+      gender: 'female',
+    },
+    {
+      name: 'Carey Barr',
+      friends: ['Jordan Sampson', 'Eddie Strong'],
+      gender: 'male',
+    },
+    {
+      name: 'Blackburn Dotson',
+      friends: ['Jacklyn Lucas', 'Linda Chapman'],
+      gender: 'male',
+    },
+    {
+      name: 'Sheree Anthony',
+      friends: ['Goldie Gentry', 'Briana Decker'],
+      gender: 'female',
+    },
+  ]),
+);
+// [
+//   {
+//     name: "Ross Vazquez",
+//     friends: ["Marilyn Mcintosh", "Padilla Garrison", "Naomi Buckner"],
+//     gender: "male"
+//   },
+//   {
+//     name: "Sharlene Bush",
+//     friends: ["Briana Decker", "Sharron Pace"],
+//     gender: "female"
+//   },
+//   {
+//     name: "Elma Head",
+//     friends: ["Goldie Gentry", "Aisha Tran"],
+//     gender: "female"
+//   },
+//   {
+//     name: "Carey Barr",
+//     friends: ["Jordan Sampson", "Eddie Strong"],
+//     gender: "male"
+//   },
+//   {
+//     name: "Blackburn Dotson",
+//     friends: ["Jacklyn Lucas", "Linda Chapman"],
+//     gender: "male"
+//   },
+//   {
+//     name: "Sheree Anthony",
+//     friends: ["Goldie Gentry", "Briana Decker"],
+//     gender: "female"
+//   },
+//   {
+//     name: "Moore Hensley",
+//     friends: ["Sharron Pace"],
+//     gender: "male"
+//   }
+// ]

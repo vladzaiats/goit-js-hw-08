@@ -1,43 +1,66 @@
 'use strict';
 taskNum++;
 console.log(`%c Task ${taskNum} `, style);
-const calcAverageCalories = function (days = []) {
-  if (!Array.isArray(days))
-    throw new Error(`Argument must be array! You provide ${typeof days}`);
 
-  let summ = 0;
-  let average = 0;
-  if (days.length > 0) {
-    for (const key in days) {
-      summ += Number.parseInt(days[key].calories);
-    }
-    return (average = summ / days.length);
-  } else {
-    return 0;
-  }
+const getUsersWithFriend = (users, friendName) => {
+  const trueFriends = users
+    .map(user => user)
+    .filter(user => user.friends.some(friend => friend === friendName));
+  return trueFriends;
 };
-console.log(
-  calcAverageCalories([
-    { day: 'monday', calories: 3010 },
-    { day: 'tuesday', calories: 3200 },
-    { day: 'wednesday', calories: 3120 },
-    { day: 'thursday', calories: 2900 },
-    { day: 'friday', calories: 3450 },
-    { day: 'saturday', calories: 3280 },
-    { day: 'sunday', calories: 3300 },
-  ]),
-); // 3180
+const allUsers = [
+  {
+    name: 'Moore Hensley',
+    friends: ['Sharron Pace'],
+  },
+  {
+    name: 'Sharlene Bush',
+    friends: ['Briana Decker', 'Sharron Pace'],
+  },
+  {
+    name: 'Ross Vazquez',
+    friends: ['Marilyn Mcintosh', 'Padilla Garrison', 'Naomi Buckner'],
+  },
+  {
+    name: 'Elma Head',
+    friends: ['Goldie Gentry', 'Aisha Tran'],
+  },
+  {
+    name: 'Carey Barr',
+    friends: ['Jordan Sampson', 'Eddie Strong'],
+  },
+  {
+    name: 'Blackburn Dotson',
+    friends: ['Jacklyn Lucas', 'Linda Chapman'],
+  },
+  {
+    name: 'Sheree Anthony',
+    friends: ['Goldie Gentry', 'Briana Decker'],
+  },
+];
 
-console.log(
-  calcAverageCalories([
-    { day: 'monday', calories: 2040 },
-    { day: 'tuesday', calories: 2270 },
-    { day: 'wednesday', calories: 2420 },
-    { day: 'thursday', calories: 1900 },
-    { day: 'friday', calories: 2370 },
-    { day: 'saturday', calories: 2280 },
-    { day: 'sunday', calories: '2610' }, //what is someone setup wrong value??
-  ]),
-); // 2270
+console.log(getUsersWithFriend(allUsers, 'Briana Decker'));
+// [
+//   {
+//     name: "Sharlene Bush",
+//     friends: ["Briana Decker", "Sharron Pace"]
+//   },
+//   {
+//     name: "Sheree Anthony",
+//     friends: ["Goldie Gentry", "Briana Decker"]
+//   }
+// ]
 
-console.log(calcAverageCalories([])); // 0
+console.log(getUsersWithFriend(allUsers, 'Goldie Gentry'));
+// [
+//   {
+//     name: "Elma Head",
+//     friends: ["Goldie Gentry", "Aisha Tran"]
+//   },
+//   {
+//     name: "Sheree Anthony",
+//     friends: ["Goldie Gentry", "Briana Decker"]
+//   }
+// ]
+
+console.log(getUsersWithFriend(allUsers, 'Adrian Cross')); // []
