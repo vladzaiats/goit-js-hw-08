@@ -1,16 +1,27 @@
 'use strict';
-const filterArray = function (numbers = [], value = 0) {
-  if (typeof numbers === 'object') {
-    let arr = [];
-    arr = numbers.filter(number => number > value);
-    return arr;
-  } else {
-    console.error('ERROR: Wrong parameters type');
-    return;
-  }
+taskNum++;
+console.log(`%c Task ${taskNum} `, style);
+
+const profile = {
+  username: 'Jacob',
+  playTime: 300,
+  getInfo() {
+    return `${this.username} has ${this.playTime} active hours!`;
+  },
+  changeUsername(name) {
+    if (typeof name !== 'string')
+      throw new Error(`Provide valid name! Not ${typeof name}`);
+    this.username = name;
+  },
+  updatePlayTime(minutes) {
+    if (typeof minutes !== 'number')
+      throw new Error(`Provide valid time in minutes! Not ${typeof minutes}`);
+    this.playTime += minutes;
+  },
 };
-console.log(filterArray([1, 2, 3, 4, 5], 3)); // [4, 5]
-console.log(filterArray([1, 2, 3, 4, 5], 4)); // [5]
-console.log(filterArray([1, 2, 3, 4, 5], 5)); // []
-console.log(filterArray([12, 24, 8, 41, 76], 38)); // [41, 76]
-console.log(filterArray([12, 24, 8, 41, 76], 20)); // [24, 41, 76]
+
+console.log(profile.getInfo()); // "Jacob has 300 active hours!"
+profile.changeUsername('Marco');
+console.log(profile.getInfo()); // "Marco has 300 active hours!"
+profile.updatePlayTime(20);
+console.log(profile.getInfo()); // "Marco has 320 active hours!"
