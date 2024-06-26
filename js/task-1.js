@@ -1,35 +1,28 @@
 'use strict';
-let taskNum = 1;
-const style = 'background: rgba(0, 255, 0, 0.5); color: #333; font-size:18px;';
-console.log(`%c Task ${taskNum} `, style);
+class Categories {
+  list = document.querySelector('#categories');
+  totalCount = this.list.childElementCount;
+  itemsArray = Array.from(this.list.children);
 
-const customer = {
-  username: 'Mango',
-  balance: 24000,
-  discount: 0.1,
-  orders: ['Burger', 'Pizza', 'Salad'],
-  // Change code below this line
-  getBalance() {
-    return this.balance;
-  },
-  getDiscount() {
-    return this.discount;
-  },
-  setDiscount(value) {
-    this.discount = value;
-  },
-  getOrders() {
-    return this.orders;
-  },
-  addOrder(cost, order) {
-    this.balance -= cost - cost * this.discount;
-    this.orders.push(order);
-  },
-  // Change code above this line
-};
-
-customer.setDiscount(0.15);
-console.log(customer.getDiscount()); // 0.15
-customer.addOrder(5000, 'Steak');
-console.log(customer.getBalance()); // 19750
-console.log(customer.getOrders()); // ["Burger", "Pizza", "Salad", "Steak"]
+  getCategoryName(item) {
+    const catName = item.querySelector('h2').innerText;
+    const categoryNameMsg = `Category: ${catName}`;
+    return categoryNameMsg;
+  }
+  getCategoryItemsCount(item) {
+    const itemList = item.querySelector('ul');
+    const totalChildCount = itemList.childElementCount;
+    const childsTotalMsg = `Elements: ${totalChildCount}`;
+    return childsTotalMsg;
+  }
+  messageToConsoleLog() {
+    const categoryTotalMsg = `Number of categories: ${this.totalCount}`;
+    console.log(categoryTotalMsg);
+    this.itemsArray.forEach(item => {
+      console.log(this.getCategoryName(item));
+      console.log(this.getCategoryItemsCount(item));
+    });
+  }
+}
+const categories = new Categories();
+categories.messageToConsoleLog();

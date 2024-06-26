@@ -1,0 +1,50 @@
+.gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  margin: auto;
+}
+.gallery > li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  width: 100%;
+  aspect-ratio: 4/3;
+}
+.gallery > li img {
+  max-width: initial;
+  height: 300px;
+}
+@media screen and (min-width: 360px) {
+  .gallery {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .gallery > li {
+    width: calc((100% - 24px) / 2);
+  }
+}
+@media screen and (min-width: 767px) {
+  .gallery {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 48px 24px;
+  }
+  .gallery > li {
+    width: calc((100% - 24px * 2) / 3);
+  }
+}
+@media screen and (min-width: 991px) {
+  .gallery {
+    max-width: 1128px;
+  }
+  .gallery > li {
+    height: 300px;
+  }
+  .gallery > li img {
+    max-width: initial;
+    height: 300px;
+  }
+}

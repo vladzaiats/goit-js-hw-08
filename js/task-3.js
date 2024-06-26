@@ -1,32 +1,9 @@
 'use strict';
-taskNum++;
-console.log(`%c Task ${taskNum} `, style);
-class StringBuilder {
-  #value;
-  constructor(initialValue) {
-    this.#value = initialValue;
-  }
-  getValue() {
-    return this.#value;
-  }
-  padEnd(str) {
-    this.#value = this.#value + str;
-    return this.#value;
-  }
-  padStart(str) {
-    this.#value = str + this.#value;
-    return this.#value;
-  }
-  padBoth(str) {
-    this.#value = str + this.#value + str;
-    return this.#value;
-  }
-}
-const builder = new StringBuilder('.');
-console.log(builder.getValue()); // "."
-builder.padStart('^');
-console.log(builder.getValue()); // "^."
-builder.padEnd('^');
-console.log(builder.getValue()); // "^.^"
-builder.padBoth('=');
-console.log(builder.getValue()); // "=^.^="
+
+const input = document.querySelector('#name-input');
+const nameOutput = document.querySelector('#name-output');
+const nameDefault = 'Anonymous';
+input.addEventListener(
+  'input',
+  e => (nameOutput.innerText = e.target.value.trim() || nameDefault),
+);

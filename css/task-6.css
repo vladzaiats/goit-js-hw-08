@@ -1,0 +1,55 @@
+#controls,
+#boxes {
+  position: relative;
+  display: flex;
+  gap: 16px;
+  max-width: 486px;
+  margin: auto;
+  padding: 32px;
+  border-radius: 8px;
+  background-color: #f6f6fe;
+}
+#controls {
+  margin-bottom: 16px;
+}
+#boxes {
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+#controls input {
+  flex: 1;
+  padding-right: 0;
+  text-align: center;
+}
+#controls.error input {
+  border-color: red;
+}
+.js-error-msg {
+  --error-color: rgb(255, 164, 164);
+  position: absolute;
+  bottom: -10px;
+  left: 32px;
+  padding: 5px 10px;
+  border: 1px solid var(--error-color);
+  border-radius: 4px;
+  background-color: var(--error-color);
+  color: #fff;
+  font-size: 12px;
+  opacity: 0;
+  transition: opacity 250ms ease;
+}
+.js-error-msg:before {
+  content: '';
+  position: absolute;
+  top: -9px;
+  width: 15px;
+  height: 15px;
+  border: 1px solid var(--error-color);
+  border-right: transparent;
+  border-bottom: transparent;
+  background-color: var(--error-color);
+  transform: rotate(45deg);
+}
+#controls.error .js-error-msg {
+  opacity: 1;
+}

@@ -1,0 +1,11 @@
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.login-form label {
+  max-width: 360px;
+}
+.login-form button {
+  margin-top: 8px;
+}

@@ -1,0 +1,15 @@
+body {
+  width: calc(100dvw - 16px * 2);
+  height: calc(100dvh - 16px * 2);
+}
+.widget {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+}
+.widget .color {
+  color: rgb(255, 255, 255);
+  mix-blend-mode: difference;
+}
