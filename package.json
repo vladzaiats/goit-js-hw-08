@@ -1,0 +1,9 @@
+{
+  "name": "goit-js-hw-8",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "dependencies": {
+    "basiclightbox": "^5.0.4"
+  }
+}
